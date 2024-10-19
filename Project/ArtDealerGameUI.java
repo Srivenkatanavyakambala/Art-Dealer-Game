@@ -61,6 +61,11 @@ public class ArtDealerGameUI extends JFrame {
         topPanel.add(new JLabel("Guess the Pattern:"));
         topPanel.add(patternSelector);
 
+        // Role Selector for Multiplayer
+        roleSelector = new JComboBox<>(new String[]{"Art Dealer", "Art Seller"});
+        topPanel.add(new JLabel("Select Role:"));
+        topPanel.add(roleSelector);
+
         // Start Game Button
         startGameButton = new JButton("Start Game");
         startGameButton.addActionListener(new StartGameListener());

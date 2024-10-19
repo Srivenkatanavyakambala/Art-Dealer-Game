@@ -87,7 +87,10 @@ The game can be played by one or two students and includes real-time feedback to
   - Flush (all cards of the same suit)
   - Straight (consecutive numbers in any suit)
   - Full House (3 cards of one rank and 2 of another)
-  
+
+### Extra Credit:
+- In the 6-8 level, students can play against each other. One student can take the role of the art dealer (choosing a pattern), while the other student attempts to guess the pattern.
+
 ## Development
 
 This project is developed using **Java Swing** for the user interface and basic game logic. The deck of cards is modeled as an array of `Card` objects, and random cards are generated for each round of the game. The program checks the player's guesses based on the difficulty level.
@@ -151,3 +154,69 @@ This project is developed using **Java Swing** for the user interface and basic 
 | Cards of different suits    | **Incorrect!** You have 2 tries left.        |
 | Non-consecutive numbers     | **Incorrect!** You have 1 try left.          |
 | A pair of cards            | **Incorrect!** Game resets.                   |
+
+## Multiplayer Scenario
+
+In the multiplayer mode, one player takes on the role of the Art Dealer, while the other player tries to guess the pattern. The Art Dealer selects a pattern from the available options, and the guessing player attempts to identify it.
+
+### Art Dealer Inputs and Outputs
+
+#### Correct Inputs and Outputs
+| Input (Art Dealer)         | Output (Guessing Player)                        |
+|-----------------------------|-------------------------------------------------|
+| Pattern: All red           | **Correct!** Balloons fly across the screen.   |
+| Pattern: All hearts        | **Correct!** Balloons fly across the screen.   |
+| Pattern: Full House (3 Kings, 2 Aces) | **Correct!** Balloons fly across the screen.   |
+
+#### Wrong Inputs and Outputs
+| Input (Art Dealer)         | Output (Guessing Player)                        |
+|-----------------------------|-------------------------------------------------|
+| Pattern: All black         | **Incorrect!** You have 2 tries left.         |
+| Pattern: Straight          | **Incorrect!** You have 1 try left.           |
+| Pattern: A single pair     | **Incorrect!** Game resets.                    |
+
+---
+
+### Guessing Player Inputs and Outputs
+
+#### Correct Inputs and Outputs
+| Input (Guessing Player)    | Output (Art Dealer)                             |
+|-----------------------------|-------------------------------------------------|
+| Guess: All red              | **Correct!** Balloons fly across the screen.   |
+| Guess: All hearts           | **Correct!** Balloons fly across the screen.   |
+| Guess: Full House (3 Kings, 2 Aces) | **Correct!** Balloons fly across the screen.   |
+
+#### Wrong Inputs and Outputs
+| Input (Guessing Player)    | Output (Art Dealer)                             |
+|-----------------------------|-------------------------------------------------|
+| Guess: All black            | **Incorrect!** You have 2 tries left.         |
+| Guess: Three consecutive numbers (not a straight) | **Incorrect!** You have 1 try left.           |
+| Guess: A mix of cards (not matching any pattern) | **Incorrect!** Game resets.                    |
+
+---
+
+### Example Game Flow
+
+1. **Art Dealer chooses a pattern**:
+   - Input: `Pattern: All Red`
+   - Output: (No immediate output; waiting for guessing player)
+
+2. **Guessing Player makes a guess**:
+   - Input: `Guess: All Red`
+   - Output: `**Correct!** Balloons fly across the screen.`
+
+3. **Art Dealer chooses a new pattern**:
+   - Input: `Pattern: Full House`
+   - Output: (No immediate output; waiting for guessing player)
+
+4. **Guessing Player makes a wrong guess**:
+   - Input: `Guess: All Black`
+   - Output: `**Incorrect!** You have 2 tries left.`
+
+5. **Guessing Player makes another guess**:
+   - Input: `Guess: Three consecutive cards`
+   - Output: `**Incorrect!** You have 1 try left.`
+
+6. **Guessing Player final guess**:
+   - Input: `Guess: Full House`
+   - Output: `**Correct!** Balloons fly across the screen.`
